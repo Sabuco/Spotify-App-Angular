@@ -1,0 +1,53 @@
+<div class="container" ng-controller = "selectArtistaController" ng-show = "artistasFac.length">
+    <div class="jumbotron">
+      <h2>Select an artist...</h2>
+          <select class="selectpicker show-tick" ng-model ="select" ng-change="albumSelect()">
+             <option ng-repeat="artistas in artistasFac" >{{artistas.name}}</option>
+          </select>
+    </div>
+
+    <div class="modal fade" >
+      <div class="modal-dialog" role="document" style ="width: 45%;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">{{singleAlbum.name}}</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style = "margin-top: -1.4em;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class ="row">
+              <div class ="col-md-7 col-lg-7 col-xs-7 col-sm-7">
+                <img src="{{singleAlbum.images[1].url}}" alt="">
+              </div>
+              <div class ="col-md-5 col-lg-5 col-xs-5 col-sm-5">
+                <p>Date: {{singleAlbum.release_date}}</p>
+                <p>Popularity: {{singleAlbum.popularity}}</p>
+                <hr>
+                <h5>Tracklist</h5>
+
+                <p ng-repeat = "traks in singleAlbum.tracks.items track by $index">
+                  {{$index}} - <a href="{{traks.preview_url}}">{{traks.name}}</a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="jumbotron" ng-show = "albumes.length">
+
+      <h2>Albums and details</h2>
+
+      <div class ="row">
+            
+            <div ng-repeat ="album in albumes track by $index" class ="col-md-4 col-lg-4 col-xs-4 col-sm-4" style="cursor:pointer;">
+                <img  ng-click = "singleSelect(album.id)" src ="{{album.images[1].url}}" style="margin-top:10px; margin-bottom:10px;" >
+            </div>
+            
+      </div>
+    </div>
+  </div>

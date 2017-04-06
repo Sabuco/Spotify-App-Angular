@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="jumbotron" ng-controller = "buscarArtistaController">
+      <h2>Search an artist...</h2>
+      <form ng-submit="submitArtist($event)">
+        <div class="input-group">
+          
+          <input type="text" class="form-control" ng-model = "nameArtist" placeholder="Artist Name" aria-describedby="basic-addon1"/>
+
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
